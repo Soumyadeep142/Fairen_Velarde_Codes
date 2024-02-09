@@ -1,5 +1,5 @@
 C params.inc
-      INTEGER, PARAMETER :: no_of_confg = 100
+      INTEGER, PARAMETER :: no_of_confg = 1000
       DOUBLE PRECISION, PARAMETER :: alpha = 19.4
       DOUBLE PRECISION, PARAMETER :: beta = 10.997
       DOUBLE PRECISION, PARAMETER :: kappa = 0.374
