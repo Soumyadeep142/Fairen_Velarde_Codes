@@ -1,0 +1,10 @@
+no_of_confg = 100
+alpha = 19.4
+beta = 10.997
+kappa = 0.374
+upper_time = 10000.0
+lower_time = 0.0
+h = 0.001
+time_division = int(upper_time / h)
+width = 1.2
+diff = 100
