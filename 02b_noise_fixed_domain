@@ -1,12 +1,40 @@
-set term pngcairo color
-set output 'fixed_noise.png'
+set term pdfcairo color
+set output 'fixed_noise.pdf'
 
 f(x)=m*x+c
 m=2
 c=1
 
-fit f(x) 'Fixed_pt_analysis_revise.txt' u 1:4 via m,c
+fit f(x) 'Fixed_pt_analysis_revise_5000.txt' u 1:4 via m,c
+
+g(x)=a*x+b
+a=2
+b=1
+
+fit g(x) 'Fixed_pt_analysis_revise_10000.txt' u 1:4 via a,b
+
+h(x)=i*x+j
+i=2
+j=1
+
+fit h(x) 'Fixed_pt_analysis_revise_7500.txt' u 1:4 via i,j
+
+k(x)=r*x+s
+r=2
+s=1
+
+fit k(x) 'Fixed_pt_analysis_revise_12500.txt' u 1:4 via r,s
+
+
+u(x)=v*x+w
+v=2
+w=1
+
+fit u(x) 'Fixed_pt_analysis_revise_12500.txt' u 1:4 via v,w
+
 set xlabel 'Noise Intensity'
 set ylabel 'Area of Fixed Point Domain'
 
-pl 'Fixed_pt_analysis.txt' u 1:4 notitle w p ps 2 pt 7, f(x) notitle
+
+
+pl 'Fixed_pt_analysis_5000.txt' u 1:4:6 title 'T<5000' with errorbars  ps 0.5 pt 7, 'Fixed_pt_analysis_10000.txt' u 1:4:6 title 'T<10000' with errorbars ps 0.5 pt 3, 'Fixed_pt_analysis_7500.txt' u 1:4:6 title 'T<7500' with errorbars ps 0.5 pt 6, 'Fixed_pt_analysis_12500.txt' u 1:4:6 title 'T<12500' with errorbars ps 0.5 pt 4, 'Fixed_pt_analysis_15000.txt' u 1:4:6 title 'T<15000' with errorbars ps 0.5 pt 5, f(x) notitle, g(x) notitle, h(x) notitle, k(x) notitle, u(x) notitle

@@ -1,8 +1,87 @@
 set term pdfcairo color
 set output 'prob_noise.pdf'
+set print 'fitting_values_prob.txt'
 
+f1(x)=a1*tanh(b1*x+c1)+d1
+a1=1
+b1=1
+c1=1
+d1=1
+
+fit f1(x) 'Fixed_pt_analysis_5000.txt' u 1:2 via a1, b1, c1, d1
+
+f2(x)=a2*tanh(b2*x+c2)+d2
+a2=1
+b2=1
+c2=1
+d2=1
+
+fit f2(x) 'Fixed_pt_analysis_7500.txt' u 1:2 via a2, b2, c2, d2
+
+f3(x)=a3*tanh(b3*x+c3)+d3
+a3=1
+b3=1
+c3=1
+d3=1
+
+fit f3(x) 'Fixed_pt_analysis_10000.txt' u 1:2 via a3, b3, c3, d3
+
+f4(x)=a4*tanh(b4*x+c4)+d4
+a4=1
+b4=1
+c4=1
+d4=1
+
+fit f4(x) 'Fixed_pt_analysis_12500.txt' u 1:2 via a4, b4, c4, d4
+
+f5(x)=a5*tanh(b5*x+c5)+d5
+a5=1
+b5=1
+c5=1
+d5=1
+
+fit f5(x) 'Fixed_pt_analysis_15000.txt' u 1:2 via a5, b5, c5, d5
 
 set xlabel 'Noise Intensity'
 set ylabel 'Probability of Finding Fixed Domain'
+set key right bottom
 
-pl 'Fixed_pt_analysis.txt' u 1:2 notitle w p ps 1 pt 7
+pl 'Fixed_pt_analysis_5000.txt' u 1:2 title 'T<5000' w p ps 0.5 pt 7, 'Fixed_pt_analysis_7500.txt' u 1:2 title 'T<7500' w p ps 0.5 pt 6, 'Fixed_pt_analysis_10000.txt' u 1:2 title 'T<10000' w p ps 0.5 pt 3,  'Fixed_pt_analysis_12500.txt' u 1:2 title 'T<12500' w p ps 0.5 pt 1, 'Fixed_pt_analysis_15000.txt' u 1:2 title 'T<15000' w p ps 0.5 pt 5, f1(x) notitle, f2(x) notitle, f3(x) notitle, f4(x) notitle, f5(x) notitle
+
+
+print "T<5000:"
+print "a1 = ", a1
+print "b1 = ", b1
+print "c1 = ", c1
+print "d1 = ", d1
+print ""
+
+print "T<7500:"
+print "a2 = ", a2
+print "b2 = ", b2
+print "c2 = ", c2
+print "d2 = ", d2
+print ""
+
+print "T<10000:"
+print "a3 = ", a3
+print "b3 = ", b3
+print "c3 = ", c3
+print "d3 = ", d3
+print ""
+
+print "T<12500:"
+print "a4 = ", a4
+print "b4 = ", b4
+print "c4 = ", c4
+print "d4 = ", d4
+print ""
+
+print "T<15000:"
+print "a5 = ", a5
+print "b5 = ", b5
+print "c5 = ", c5
+print "d5 = ", d5
+print ""
+# Close the output file
+set print
