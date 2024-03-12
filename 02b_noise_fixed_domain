@@ -1,0 +1,12 @@
+set term pngcairo color
+set output 'fixed_noise.png'
+
+f(x)=m*x+c
+m=2
+c=1
+
+fit f(x) 'Fixed_pt_analysis_revise.txt' u 1:4 via m,c
+set xlabel 'Noise Intensity'
+set ylabel 'Area of Fixed Point Domain'
+
+pl 'Fixed_pt_analysis.txt' u 1:4 notitle w p ps 2 pt 7, f(x) notitle
